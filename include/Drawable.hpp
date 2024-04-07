@@ -1,6 +1,6 @@
 #pragma once
 
-#include <U8glib.h>
+#include <Adafruit_SSD1306.h>
 
 class Drawable
 {
@@ -9,5 +9,5 @@ class Drawable
 
 		friend class Display;
 	private:
-		virtual void __draw(const U8GLIB_SSD1306_128X64&) const noexcept = 0;
+		virtual void __draw(const Adafruit_SSD1306&) const noexcept = 0;
 };

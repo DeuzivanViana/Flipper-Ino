@@ -9,15 +9,16 @@ class Menu : public Drawable
 		Menu() noexcept;
 		
 		void addOption(const Option option) noexcept;
-
+		const size_t getSize() const noexcept;
+		
 		~Menu() noexcept;
 
 	protected:
 		void _resize() noexcept;
-
+	
 	private:
 		Option *__options;
 		uint8_t __index, __size;
 
-		void __draw(const U8GLIB_SSD1306_128X64&) const noexcept override;
+		void __draw(const Adafruit_SSD1306&) const noexcept override;
 };

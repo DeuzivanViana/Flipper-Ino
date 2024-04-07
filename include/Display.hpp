@@ -1,6 +1,9 @@
 #pragma once
 
-#include <U8glib.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
 #include "Drawable.hpp"
 
 class Display
@@ -9,12 +12,12 @@ class Display
 		Display() noexcept;
 
 		void init() noexcept;
-		void firstPage() const noexcept;
-		int nextPage() const noexcept;
-		const U8GLIB_SSD1306_128X64 &getU8g() const noexcept;
+		const Adafruit_SSD1306 &getSsd() const noexcept;
 		void draw(const Drawable&) const noexcept;
+		void clear() const noexcept;
+		void render() const noexcept;
 
 		~Display() noexcept;
 	private:
-		U8GLIB_SSD1306_128X64 *__u8g;
+		Adafruit_SSD1306 *__oled;
 };

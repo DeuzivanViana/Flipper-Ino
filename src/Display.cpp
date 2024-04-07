@@ -1,35 +1,38 @@
 #include "Display.hpp"
 
+#include "Config.hpp"
+
 Display::Display() noexcept
 {
+	this->__oled = new Adafruit_SSD1306(
+			OLED_WIDTH, OLED_HEIGHT, &Wire, -1);
 }
 
 void Display::init() noexcept
 {
-	this->__u8g = new U8GLIB_SSD1306_128X64(
-			U8G_I2C_OPT_DEV_0 | U8G_I2C_OPT_NO_ACK | U8G_I2C_OPT_FAST);
+	this->__oled->begin(SSD1306_SWITCHCAPVCC, 0x3C);
+	this->__oled->setTextSize(1);
+  this->__oled->setTextColor(WHITE);
 
-	this->__u8g->setColorIndex(1);
-	this->__u8g->setFont(u8g_font_6x12);
 }
-void Display::firstPage() const noexcept
+const Adafruit_SSD1306 &Display::getSsd() const noexcept
 {
-	this->__u8g->firstPage();
-}
-int Display::nextPage() const noexcept
-{
-	return this->__u8g->nextPage();
-}
-const U8GLIB_SSD1306_128X64 &Display::getU8g() const noexcept
-{
-	return *this->__u8g;
+	return *this->__oled;
 }
 void Display::draw(const Drawable &drawable) const noexcept
 {
-	drawable.__draw(this->getU8g());
+	drawable.__draw(this->getSsd());
+}
+void Display::clear() const noexcept
+{
+	this->__oled->clearDisplay();
+}
+void Display::render() const noexcept
+{
+	this->__oled->display();
 }
 
 Display::~Display() noexcept
 {
-	delete this->__u8g;
+	delete this->__oled;
 }

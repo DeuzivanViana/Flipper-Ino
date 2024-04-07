@@ -26,11 +26,15 @@ void Menu::_resize() noexcept
 
 	this->__size++;
 }
+const size_t Menu::getSize() const noexcept
+{
+	return this->__size;
+}
 
-void Menu::__draw(const U8GLIB_SSD1306_128X64 &u8g) const noexcept 
+void Menu::__draw(const Adafruit_SSD1306 &oled) const noexcept 
 {
 	for(uint8_t i = 0; i < this->__size; i++)
-		u8g.drawStr(0, FONT_HEIGHT * i, this->__options[i].getLabel().c_str());
+		oled.println(this->__options[i].getLabel().c_str());
 }
 
 Menu::~Menu()
