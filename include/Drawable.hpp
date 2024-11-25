@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DRAWABLE_HPP
+#define DRAWABLE_HPP
 
 #include <Adafruit_SSD1306.h>
 
@@ -9,5 +10,7 @@ class Drawable
 
 		friend class Display;
 	private:
-		virtual void __draw(const Adafruit_SSD1306&) const noexcept = 0;
+		virtual void __draw(Adafruit_SSD1306&) const noexcept = 0;
 };
+
+#endif

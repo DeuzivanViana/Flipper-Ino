@@ -31,7 +31,7 @@ const size_t Menu::getSize() const noexcept
 	return this->__size;
 }
 
-void Menu::__draw(const Adafruit_SSD1306 &oled) const noexcept 
+void Menu::__draw(Adafruit_SSD1306 &oled) const noexcept 
 {
 	for(uint8_t i = 0; i < this->__size; i++)
 		oled.println(this->__options[i].getLabel().c_str());

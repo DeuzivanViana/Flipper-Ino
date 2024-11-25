@@ -15,7 +15,7 @@ void Display::init() noexcept
   this->__oled->setTextColor(WHITE);
 
 }
-const Adafruit_SSD1306 &Display::getSsd() const noexcept
+Adafruit_SSD1306 &Display::getSsd() const noexcept
 {
 	return *this->__oled;
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MENU_HPP
+#define MENU_HPP
 
 #include "Drawable.hpp"
 #include "Option.hpp"
@@ -20,5 +21,7 @@ class Menu : public Drawable
 		Option *__options;
 		uint8_t __index, __size;
 
-		void __draw(const Adafruit_SSD1306&) const noexcept override;
+		void __draw(Adafruit_SSD1306&) const noexcept override;
 };
+
+#endif

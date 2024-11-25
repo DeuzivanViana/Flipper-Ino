@@ -1,4 +1,5 @@
-#pragma once
+#ifndef OPTION_HPP
+#define OPTION_HPP
 
 #include <Arduino.h>
 
@@ -17,3 +18,5 @@ class Option
 		String __label;
 		uint8_t *__icon;
 };
+
+#endif

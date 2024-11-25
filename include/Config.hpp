@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
 
 #include <Arduino.h>
 
@@ -10,3 +11,4 @@ constexpr uint8_t
 	OLED_HEIGHT = 64,
 	FONT_HEIGHT = 12;
 
+#endif
